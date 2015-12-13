@@ -37,7 +37,7 @@ function DATE_TIME_SEARCH {
     done
     # If no input then grab current system time. 
     if [ "${endDate}" = "" ]; then
-        endDate=`date +%Y-%m-%d`
+        endDate=$(date +%Y-%m-%d)
     fi       
 
     while read -r file; do
