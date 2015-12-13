@@ -101,7 +101,7 @@ function LINUX {
         read startDate
     done
 
-    find $folder -type f -newermt $startDate ! -newermt $endDate -print0 | while read -d $'\0' file; do
+    while read -r file; do
         #echo $file
         # Run stat on each file returned then format the results.
         # stat format translaton: Permissions, User ID, Group ID, Size (bytes), Time Modified, Name
@@ -109,7 +109,7 @@ function LINUX {
         # Calculate MD5 hash of retuned files.
         echo "MD5: $(md5sum "$file"| cut -f 2- -d ' ')"
         echo ""
-    done
+    done < <(find $folder -type f -newermt $startDate ! -newermt $endDate)
 
 }
 
