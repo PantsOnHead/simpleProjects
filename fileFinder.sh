@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function press_enter
+function PRESS_ENTER
 {
     echo ""
     echo -n "Press Enter to continue"
@@ -113,7 +113,7 @@ function LINUX {
 
 }
 
-function sha1Search {
+function SHA1_SEARCH {
     echo "***********************"
     echo "*** Search For sha1 ***"
     echo "***********************"
@@ -192,10 +192,10 @@ until [ "$selection" = "0" ]; do
     read selection
     echo ""
     case $selection in
-    	1 ) clear; OS_X ; press_enter ;;
-        2 ) clear; LINUX ; press_enter ;;
-        3 ) clear; sha1Search ; press_enter ;;
+    	1 ) clear; OS_X ; PRESS_ENTER ;;
+        2 ) clear; LINUX ; PRESS_ENTER ;;
+        3 ) clear; SHA1_SEARCH ; PRESS_ENTER ;;
         0 ) exit ;;
-        * ) echo "Please enter 1, 2, or 0"; press_enter
+        * ) echo "Please enter 1, 2, or 0"; PRESS_ENTER
     esac
 done
