@@ -14,8 +14,7 @@ function DATE_TIME_SEARCH {
     echo -n "Enter a folder to scan: "
     read folder
     while [ ! -d "${folder}" ]; do
-        echo "ERROR. Invalid directory."
-        echo ""
+        echo -e "ERROR. Invalid directory.\n"
         echo -n "Enter a folder to scan: "
         read folder
     done
@@ -61,25 +60,20 @@ function DATE_TIME_SEARCH {
 function SHA1_SEARCH {
     echo "***********************"
     echo "*** Search For sha1 ***"
-    echo "***********************"
-    echo "" 
-    echo ""
+    echo -e "***********************\n\n"
     echo -n "Enter Hash:"
     read shaHash
     echo -n "Speed up search? - [Y/n]"
     read answer
     if [ "$answer" = "n" ]; then
-        echo "Searching..."
-        echo ""
-        echo ""
+        echo -e "Searching...\n\n"
         find / -type f -exec /usr/bin/openssl sha1 {} \; | grep ${shaHash}
     else 
         echo -n "Enter Seach Folder: "
         read shaFolder
 
         while [ ! -d "$shaFolder" ]; do
-            echo "ERROR. Invalid directory."
-            echo ""
+            echo -e "ERROR. Invalid directory.\n"
             echo -n "Enter Seach Folder: "
             read shaFolder
         done
@@ -119,18 +113,13 @@ until [ "$selection" = "0" ]; do
     clear
     echo "*****************"
     echo "** File Finder **"
-    echo "*****************"
-	echo ""
+    echo -e "*****************\n"
 	echo "This program will search a given folder for files created within a specific date."
-	echo "The date format is YYYY-MM-DD. Optionally time can be specifed by YYYY-MM-DD 00-00-00"
-	echo ""
-    echo ""
+	echo "The date format is YYYY-MM-DD. Optionally time can be specifed by YYYY-MM-DD 00-00-00\n\n"
     echo "MAIN MENU"
     echo "1 - Search by Date / Time"
-    echo "2 - Search by sha1 hash"
-    echo ""
-    echo "0 - exit program"
-    echo ""
+    echo -e "2 - Search by sha1 hash\n"
+    echo -e "0 - exit program\n"
     echo -n "Enter selection: "
     read selection
     echo ""
