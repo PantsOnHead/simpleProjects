@@ -160,6 +160,16 @@ function sha1Search {
 
 }
 
+# Detect whether we are running GNU or BSD coreutils.
+# credit: http://unix.stackexchange.com/questions/104098/in-shell-config-scripts-how-can-i-account-for-differences-between-coreutils-on
+if stat --version 2>/dev/null | grep -q 'coreutils'
+then
+    is_GNU=true
+else
+    is_GNU=false
+fi
+
+
 selection=
 until [ "$selection" = "0" ]; do
     clear
