@@ -53,7 +53,7 @@ function DATE_TIME_SEARCH {
             stat -f "%Sp %Su %Sg %z %t%Sm %N" "$file"
             echo -e "MD5: $(md5 "$file"| cut -f 2- -d '=')\n"
         fi
-    done < <(find ${folder} -type f -newermt $startDate ! -newermt $endDate)
+    done < <(find ${folder} -type f -newermt $startDate ! -newermt $endDate 2>/dev/null)
 
 }
 
@@ -67,7 +67,7 @@ function SHA1_SEARCH {
     read answer
     if [ "$answer" = "n" ]; then
         echo -e "Searching...\n\n"
-        find / -type f -exec /usr/bin/openssl sha1 {} \; | grep ${shaHash}
+        find / -type f -exec /usr/bin/openssl sha1 {} \; 2>/dev/null | grep ${shaHash}
     else 
         echo -n "Enter Seach Folder: "
         read shaFolder
@@ -90,7 +90,7 @@ function SHA1_SEARCH {
         fi
 
         echo "Searching..."
-        find $shaFolder -type f $shaSize -exec /usr/bin/openssl sha1 {} \; | grep ${shaHash}
+        find $shaFolder -type f $shaSize -exec /usr/bin/openssl sha1 {} \; 2>/dev/null | grep ${shaHash}
     fi
 
 
