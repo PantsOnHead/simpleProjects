@@ -1,9 +1,7 @@
 #!/bin/bash
 
-function PRESS_ENTER
-{
-    echo ""
-    echo -n "Press Enter to continue"
+function PRESS_ENTER {
+    echo -en "\nPress Enter to continue"
     read
     clear
 }
@@ -49,8 +47,7 @@ function DATE_TIME_SEARCH {
         # stat format translaton: Permissions, User ID, Group ID, Size (bytes), Time Modified, Name
         # then calculate md5 hash for each file returned
 
-        if [ ${is_GNU} ]
-        then
+        if [ ${is_GNU} ]; then
             stat -c "%A %U %G %s %y %n" "${file}"
             echo -e "MD5: $(md5sum "${file}"| cut -f 2- -d ' ')\n"
         else
@@ -110,8 +107,7 @@ function SHA1_SEARCH {
 
 # Detect whether we are running GNU or BSD coreutils.
 # credit: http://unix.stackexchange.com/questions/104098/in-shell-config-scripts-how-can-i-account-for-differences-between-coreutils-on
-if stat --version 2>/dev/null | grep -q 'coreutils'
-then
+if stat --version 2>/dev/null | grep -q 'coreutils'; then
     is_GNU=true
 else
     is_GNU=false
