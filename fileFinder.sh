@@ -46,7 +46,7 @@ function DATE_TIME_SEARCH {
         # stat format translaton: Permissions, User ID, Group ID, Size (bytes), Time Modified, Name
         # then calculate md5 hash for each file returned
 
-        if [ ${is_GNU} ]; then
+        if ${is_GNU}; then
             stat -c "%A %U %G %s %y %n" "${file}"
             echo -e "MD5: $(md5sum "${file}"| cut -f 2- -d ' ')\n"
         else
@@ -109,7 +109,7 @@ until [ "$selection" = "0" ]; do
     echo "** File Finder **"
     echo -e "*****************\n"
 	echo "This program will search a given folder for files created within a specific date."
-	echo "The date format is YYYY-MM-DD. Optionally time can be specifed by YYYY-MM-DD 00-00-00\n\n"
+	echo -e "The date format is YYYY-MM-DD. Optionally time can be specifed by YYYY-MM-DD 00-00-00\n\n"
     echo "MAIN MENU"
     echo "1 - Search by Date / Time"
     echo -e "2 - Search by sha1 hash\n"
