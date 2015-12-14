@@ -54,7 +54,6 @@ function DATE_TIME_SEARCH {
             echo -e "MD5: $(md5 "$file"| cut -f 2- -d '=')\n"
         fi
     done < <(find ${folder} -type f -newermt $startDate ! -newermt $endDate 2>/dev/null)
-
 }
 
 function SHA1_SEARCH {
@@ -92,11 +91,6 @@ function SHA1_SEARCH {
         echo "Searching..."
         find $shaFolder -type f $shaSize -exec /usr/bin/openssl sha1 {} \; 2>/dev/null | grep ${shaHash}
     fi
-
-
-
-
-
 }
 
 # Detect whether we are running GNU or BSD coreutils.
